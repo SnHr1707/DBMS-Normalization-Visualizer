@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Database Normalization Tool</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Database Normalization Tool</h1>
+        <p class="intro">Normalize your database schema step-by-step through 2NF, 3NF, to BCNF.</p>
+
+        <div class="input-section">
+            <div class="input-row">
+                
+                <label for="columns">Enter relation schema (comma-separated attributes):</label>
+                <input type="text" id="columns" placeholder="e.g. StudentID, CourseID, ProfName, Grade">
+            </div>
+
+            <h2>Functional Dependencies (FDs)</h2>
+            <div id="fd-container" class="fd-container">
+                
+                <div class="fd-row">
+                    <input type="text" class="fd-left" placeholder="Determinant (e.g. A, B)">
+                    <span class="arrow">→</span>
+                    <input type="text" class="fd-right" placeholder="Dependent (e.g. C)">
+                    <button class="remove-fd-btn">X</button> 
+                </div>
+                
+            </div>
+
+            
+            <div class="button-group">
+                 <button class="add-fd-btn" onclick="addFDRow()">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                       <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2z"/>
+                     </svg>
+                     Add FD
+                 </button>
+
+                <button class="normalize-btn" onclick="normalizeTable()" style="text-align:center;">
+                    Normalize (to BCNF)
+                </button>
+            </div>
+        </div>
+
+        
+        <div id="result-section" class="result-section" style="display: none;">
+            
+             <h2>Normalization Results</h2>
+             <div id="normalization-steps">
+                 
+             </div>
+        </div>
+
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
